@@ -4,419 +4,518 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Гайд ЦЛП: Как помочь коллеге</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap');
-
-    /* CLP brand palette */
     :root {
-      --blue100: #019BAB;
-      --blue80: #5BBEC9;
-      --blue20: #C7E9ED;
-      --pink100: #E5004F;
-      --pink60: #EA496D;
-      --yellow100: #F8A600;
-      --yellow80: #FCBA00;
-      --green100: #04A634;
-      --green80: #89BD1E;
-      --white: #FFFFFF;
-      --nearblack: #2A2A2A;
-      --soft-shadow: 0 10px 25px rgba(1, 155, 171, 0.1);
+      --teal:    #019BAB;
+      --teal-lt: #C7E9ED;
+      --teal-dk: #016d78;
+      --pink:    #E5004F;
+      --yellow:  #F8A600;
+      --green:   #04A634;
+      --green2:  #89BD1E;
+      --black:   #1a1a1a;
+      --white:   #FFFFFF;
+      --bg:      #eaeff2;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: #eaeff2;
+      background: var(--bg);
+      font-family: 'Nunito', sans-serif;
+      color: var(--black);
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px 0;
+      padding: 24px 0 40px;
     }
 
-    /* Page Container (Strict A4 Proportions) */
-    .pdf-page {
+    /* ── PAGE SHELL ── */
+    .page {
       width: 210mm;
-      height: 297mm;
       background: var(--white);
-      font-family: 'Nunito', sans-serif;
-      color: var(--nearblack);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.13);
+      margin-bottom: 20px;
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      border-radius: 2px;
-      page-break-after: always;
     }
 
-    /* Decorative Background Pattern */
-    .pdf-page::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: radial-gradient(var(--blue20) 0.8px, transparent 0.8px);
-      background-size: 35px 35px;
-      opacity: 0.15;
-      pointer-events: none;
-    }
+    /* ══════════════════════════════════
+       PAGE 1 — COVER
+    ══════════════════════════════════ */
 
-    /* COVER SECTION */
     .cover {
-      background: var(--blue100);
-      padding: 0;
+      background: var(--teal);
       position: relative;
-      color: var(--white);
-      z-index: 1;
+      overflow: hidden;
+      padding: 0;
       display: flex;
       flex-direction: column;
     }
 
-    .cover-text {
-      padding: 2.2rem 3.5rem 1.2rem;
-    }
-
-    .cover-deco {
+    /* big circle deco */
+    .cover::after {
+      content: "";
       position: absolute;
-      top: -60px; right: -60px;
-      width: 300px; height: 300px;
+      right: -80px; top: -80px;
+      width: 320px; height: 320px;
       border-radius: 50%;
-      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+      background: rgba(255,255,255,0.07);
       pointer-events: none;
     }
 
-    .cover-logo {
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      color: var(--blue20);
+    .cover-top {
+      padding: 28px 36px 22px;
+      position: relative;
+      z-index: 2;
     }
 
-    .cover-tag {
-      display: inline-block;
-      background: var(--yellow100);
-      color: var(--nearblack);
+    .brand-label {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--teal-lt);
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--yellow);
+      color: var(--black);
       font-size: 12px;
       font-weight: 800;
-      padding: 5px 18px;
+      padding: 5px 16px;
       border-radius: 40px;
-      margin-bottom: 0.8rem;
+      margin-bottom: 18px;
+    }
+    .badge::before { content: "★"; font-size: 11px; }
+
+    .cover-title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.08;
+      color: var(--white);
+      max-width: 520px;
+      text-shadow: none;
+    }
+    .cover-title em {
+      font-style: normal;
+      color: var(--yellow);
     }
 
-    .cover h1 {
-      font-family: 'PT Serif', serif;
-      font-size: 32px;
-      line-height: 1.1;
-      max-width: 650px;
+    .cover-sub {
+      margin-top: 14px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.82);
+      max-width: 480px;
     }
 
-    /* Full width image filling all space */
-    .main-hero-img {
+    /* hero image area */
+    .cover-img {
       width: 100%;
-      height: 320px; 
+      height: 230px;
       object-fit: cover;
       display: block;
-      margin: 0;
     }
 
-    .stripe-y { height: 10px; background: var(--yellow100); position: relative; z-index: 2; }
-    .stripe-g { height: 5px; background: var(--green80); position: relative; z-index: 2; }
-
-    /* TEXT CONTENT */
-    .intro {
-      padding: 1.2rem 3.5rem;
-      background: var(--blue20);
-      position: relative;
+    /* placeholder when image missing */
+    .cover-img-placeholder {
+      width: 100%;
+      height: 230px;
+      background: linear-gradient(135deg, #016d78 0%, #01b5c8 60%, #89BD1E 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 52px;
+      letter-spacing: .05em;
+      color: rgba(255,255,255,0.35);
+      font-family: 'Dela Gothic One', sans-serif;
     }
-    .intro p {
+
+    .stripe { height: 10px; background: var(--yellow); }
+    .stripe-g { height: 6px; background: var(--green2); }
+
+    /* intro band */
+    .intro-band {
+      background: var(--teal-lt);
+      padding: 16px 36px;
+    }
+    .intro-band p {
       font-family: 'PT Serif', serif;
-      font-size: 17.5px;
-      line-height: 1.4;
+      font-size: 15.5px;
+      line-height: 1.55;
       font-style: italic;
-      color: #1a4a4e;
+      color: #0d4a50;
+    }
+    .intro-band strong {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--teal-dk);
     }
 
+    /* content sections */
     .section {
-      padding: 1.2rem 3.5rem;
+      padding: 16px 36px;
       display: grid;
-      grid-template-columns: 1fr 220px;
-      gap: 2rem;
+      grid-template-columns: 1fr 170px;
+      gap: 20px;
       align-items: start;
       position: relative;
       z-index: 1;
     }
-    .section.reverse {
-      grid-template-columns: 220px 1fr;
-    }
+    .section.flip { grid-template-columns: 170px 1fr; }
+    .section.full { grid-template-columns: 1fr; }
 
-    .sec-content h2 {
-      font-family: 'PT Serif', serif;
-      font-size: 22px;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      color: var(--blue100);
-      line-height: 1.15;
-    }
-    .num {
-      width: 38px; height: 38px;
+    .sec-num {
+      width: 34px; height: 34px;
       border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 17px; font-weight: 800;
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 800;
       flex-shrink: 0;
       transform: rotate(-3deg);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-right: 10px;
+      vertical-align: middle;
     }
+    .c1 { background: var(--teal-lt);  color: var(--teal); }
+    .c2 { background: #fde8ee;         color: var(--pink); }
+    .c3 { background: #fff3cc;         color: #b07700; }
+    .c4 { background: #eaf5d5;         color: var(--green); }
+    .c5 { background: var(--teal-lt);  color: var(--teal); }
 
-    .sec-text {
-      font-size: 14.5px;
-      line-height: 1.4;
-      color: #333;
-    }
-    .sec-text p { margin-bottom: 0.4rem; }
-
-    .tip {
-      margin-top: 0.6rem;
-      padding: 0.8rem 1rem;
-      border-radius: 15px;
+    .sec-head {
+      font-family: 'PT Serif', serif;
+      font-size: 19px;
       font-weight: 700;
-      font-size: 14px;
-      border-left: 8px solid var(--blue100);
-      background: var(--white);
-      box-shadow: var(--soft-shadow);
+      color: var(--teal-dk);
+      line-height: 1.2;
+      margin-bottom: 8px;
       display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      color: #1e4d50;
-      line-height: 1.3;
-    }
-    .tip::before { content: "✨"; font-size: 18px; }
-
-    .illus-container {
-      display: flex;
-      justify-content: center;
       align-items: center;
-      height: 100%;
     }
-    .illus-container img {
+
+    .sec-body {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: #2d2d2d;
+    }
+    .sec-body p + p { margin-top: 7px; }
+
+    .callout {
+      margin-top: 10px;
+      padding: 9px 13px;
+      border-left: 6px solid var(--teal);
+      background: #f4fdfe;
+      border-radius: 0 12px 12px 0;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--teal-dk);
+      line-height: 1.4;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .callout::before { content: "✨"; flex-shrink: 0; }
+    .callout.pink  { border-color: var(--pink);  background: #fff6f9; color: #7a0028; }
+    .callout.green { border-color: var(--green); background: #f4fff7; color: #06512a; }
+
+    /* illus box */
+    .illus {
+      border-radius: 14px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--teal-lt) 0%, #e8f7f9 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 130px;
+      box-shadow: 0 6px 16px rgba(1,155,171,0.1);
+      border: 1px solid var(--teal-lt);
+    }
+    .illus img {
       width: 100%;
-      height: auto;
-      max-height: 180px;
-      object-fit: contain; /* Do not crop images */
-      border-radius: 18px;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.08);
-      border: 1px solid #eee;
+      height: 100%;
+      max-height: 160px;
+      object-fit: cover;
+      display: block;
     }
-
-    /* FOOTER AREA */
-    .footer {
-      background: var(--blue100);
-      padding: 1.5rem 3rem;
-      color: white;
+    .illus-icon {
+      font-size: 48px;
       text-align: center;
-      margin-top: 1rem;
-      border-radius: 20px 20px 0 0;
-    }
-    .footer h3 { font-family: 'PT Serif', serif; font-size: 24px; margin-bottom: 0.4rem; }
-    .footer p { color: var(--blue20); margin-bottom: 1.2rem; font-size: 15px; max-width: 580px; margin-left: auto; margin-right: auto; line-height: 1.3; }
-    .footer-btn {
-      display: inline-block;
-      background: var(--yellow100);
-      color: var(--nearblack);
-      padding: 10px 35px;
-      border-radius: 80px;
-      font-weight: 800;
-      text-decoration: none;
-      font-size: 15px;
-      box-shadow: 0 8px 15px rgba(248, 166, 0, 0.3);
+      line-height: 1;
+      padding: 20px;
+      opacity: .7;
     }
 
-    .page-footer {
-      padding: 0.8rem 3.5rem;
-      display: flex; justify-content: space-between;
-      font-size: 11px; color: #94a3b8;
-      border-top: 1px solid #f1f5f9;
-      position: relative;
-      margin-top: auto;
-      flex-shrink: 0;
+    /* page foot */
+    .pgfoot {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      color: #94a3b8;
+      padding: 8px 36px;
+      border-top: 1px solid #e8f0f3;
       background: var(--white);
     }
 
-    /* Checklist Section */
-    .checklist {
-      background: #fafbfc;
-      border: 3px dashed var(--blue80);
-      margin: 1.5rem 3.5rem 1rem;
-      padding: 1.5rem;
-      border-radius: 20px;
+    /* ══════════════════════════════════
+       PAGE 3 — CHECKLIST + FOOTER
+    ══════════════════════════════════ */
+
+    .checklist-wrap {
+      margin: 14px 36px 10px;
+      border: 2.5px dashed var(--teal);
+      border-radius: 18px;
+      background: #fafcfd;
+      padding: 18px 22px;
     }
     .checklist-title {
       font-family: 'PT Serif', serif;
-      font-size: 20px;
-      color: var(--blue100);
+      font-size: 18px;
+      color: var(--teal-dk);
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 14px;
+      font-weight: 700;
     }
-    .checklist-item {
+    .check-item {
       display: flex;
       gap: 12px;
-      margin-bottom: 0.6rem;
-      font-size: 15px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      font-size: 14px;
       font-weight: 600;
+      color: #222;
+      line-height: 1.4;
     }
-    .check-box {
+    .check-item:last-child { margin-bottom: 0; }
+    .checkbox {
       width: 20px; height: 20px;
-      border: 3px solid var(--blue20);
+      border: 2.5px solid var(--teal);
       border-radius: 6px;
       flex-shrink: 0;
+      margin-top: 1px;
     }
 
-    /* Colors */
-    .num-1 { background: var(--blue20); color: var(--blue100); }
-    .num-2 { background: #fde8ee; color: var(--pink100); }
-    .num-3 { background: #fff3cc; color: var(--yellow100); }
-    .num-4 { background: #eaf5d5; color: var(--green100); }
-    .num-5 { background: var(--blue20); color: var(--blue100); }
+    /* big footer */
+    .site-footer {
+      background: var(--teal);
+      padding: 22px 36px 18px;
+      text-align: center;
+      border-radius: 18px 18px 0 0;
+      margin-top: 8px;
+    }
+    .site-footer h3 {
+      font-family: 'PT Serif', serif;
+      font-size: 22px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .site-footer p {
+      font-size: 13px;
+      color: var(--teal-lt);
+      line-height: 1.45;
+      max-width: 480px;
+      margin: 0 auto 14px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 800;
+      font-size: 14px;
+      padding: 10px 32px;
+      border-radius: 40px;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(248,166,0,0.35);
+    }
 
-    .tip-pink { border-left-color: var(--pink100); background: #fff8fa; }
-    .tip-green { border-left-color: var(--green100); background: #f8fff6; }
+    /* divider between sections */
+    .divider {
+      height: 1px;
+      background: #e8f0f3;
+      margin: 0 36px;
+    }
 
     @media print {
       body { padding: 0; background: none; }
-      .pdf-page { width: 210mm; height: 297mm; box-shadow: none; margin: 0; }
-      .pdf-page::before { opacity: 0.1; }
+      .page { box-shadow: none; margin: 0; }
     }
   </style>
 </head>
 <body>
 
-<div class="pdf-wrap">
-  
-  <!-- СТРАНИЦА 1 -->
-  <div class="pdf-page">
-    <div class="cover">
-      <div class="cover-deco"></div>
-      <div class="cover-text">
-        <div class="cover-logo">Центр лечебной педагогики</div>
-        <div class="cover-tag">Бесплатный гайд</div>
-        <h1>Как помочь коллеге с ментальными и другими особенностями (и себе!)</h1>
-      </div>
-      <img src="image1.jpg" alt="[Изображение команды разнообразия]" class="main-hero-img">
+<!-- ══════════════ СТРАНИЦА 1 ══════════════ -->
+<div class="page">
+
+  <div class="cover">
+    <div class="cover-top">
+      <div class="brand-label">Центр лечебной педагогики</div>
+      <div class="badge">Бесплатный гайд</div>
+      <h1 class="cover-title">
+        Как помочь коллеге<br>с <em>ментальными</em><br>и другими особенностями<br><em>(и себе!)</em>
+      </h1>
+      <p class="cover-sub">5 простых идей, которые сделают ваш коллектив сильнее — и безопаснее для каждого</p>
     </div>
-    <div class="stripe-y"></div>
-    <div class="intro">
-      <p>Человеческое разнообразие – чудо и ресурс. Исследования показывают, что нейроразнообразие дает очень много неочевидных преимуществ как бизнесу, так и каждому члену коллектива. Каждый ценен и каждый сможет оказаться по ту сторону!</p>
-    </div>
-    
-    <div class="section">
-      <div class="sec-content">
-        <h2><span class="num num-1">1</span> Невидимые особенности</h2>
-        <div class="sec-text">
-          <p>Инвалидность может быть невидимой. Человек с депрессией может быть улыбчивым, с РАС — общительным, с дислексией — часами разбирать инструкцию, а женщина в менопаузе — остро переживать состояние.</p>
-          <p>За рабочим промахом попробуйте увидеть не лень, а состояние. Возможно, дело в недостатке поддержки или непонимании. Внимание всё исправит.</p>
-          <div class="tip">Поддержка и внимание исправляют многое.</div>
-        </div>
+    <img src="image1.jpg" alt="Команда" class="cover-img">
+  </div>
+
+  <div class="stripe"></div>
+
+  <div class="intro-band">
+    <p>Иногда кажется, что «не такой как все» коллега усложняет работу. Но исследования показывают: нейроразнообразие даёт <strong>неочевидные преимущества</strong> и бизнесу, и каждому члену команды. <strong>Каждый ценен — и каждый может оказаться по ту сторону.</strong></p>
+  </div>
+
+  <div class="section">
+    <div>
+      <div class="sec-head">
+        <span class="sec-num c1">1</span>
+        Невидимая инвалидность
       </div>
-      <div class="illus-container">
-        <img src="image2.jpg" alt="[Изображение скрытой усталости]">
+      <div class="sec-body">
+        <p>Человек с депрессией может быть улыбчивым, с РАС — очень общительным, с дислексией — часами пытаться понять инструкцию молча. Женщина в менопаузе вряд ли расскажет всем о своём состоянии, но переживает его очень остро.</p>
+        <p>За каждым рабочим промахом попробуйте увидеть не лень и некомпетентность — а состояние, нехватку поддержки, непонимание.</p>
+        <div class="callout">Поддержка и внимание исправляют многое.</div>
       </div>
     </div>
-    <div class="page-footer">
-      <span>ccp.org.ru</span>
-      <span>стр. 1 / 3</span>
+    <div class="illus">
+      <img src="image2.jpg" alt="Скрытая усталость" style="width:100%;height:302px;object-fit:cover;border-radius:14px;">
     </div>
   </div>
 
-  <!-- СТРАНИЦА 2 -->
-  <div class="pdf-page">
-    <div class="stripe-g"></div>
-    
-    <div class="section reverse">
-      <div class="illus-container">
-        <img src="image3.jpg" alt="[Изображение совместного обеда]">
-      </div>
-      <div class="sec-content">
-        <h2><span class="num num-2">2</span> Состояние или отличия?</h2>
-        <div class="sec-text">
-          <p>Сломанная нога срастется, но РАС, дислексия, СДВГ — это нейроотличия навсегда. Признаться в них труднее, чем попросить помощи при травме.</p>
-          <p>Попробуйте узнать о коллеге больше. Сядьте рядом на обеде, спросите, как он себя чувствует, нужна ли помощь. Предложите писать вам или звонить.</p>
-          <div class="tip tip-pink">«Я не люблю есть один, а ты?» — шаг к доверию.</div>
-        </div>
-      </div>
-    </div>
+  <div class="pgfoot">
+    <span>ccp.org.ru</span>
+    <span>стр. 1 / 3</span>
+  </div>
+</div>
 
-    <div class="section">
-      <div class="sec-content">
-        <h2><span class="num num-3">3</span> Прозрачность и четкость</h2>
-        <div class="sec-text">
-          <p>Для людей с тревожностью (РАС, депрессия, новички) письменные инструкции критически важны. То, что кажется «очевидным» (время обеда, звонки в выходные), может быть непонятным.</p>
-          <p>Проговорите или пропишите все неформальные правила. Это снизит стресс и предотвратит ложные ощущения «нелояльности» или наглости.</p>
-          <div class="tip">Ясные правила делают среду безопасной для каждого.</div>
-        </div>
-      </div>
-      <div class="illus-container">
-        <img src="image4.jpg" alt="[Изображение тревоги перед телефоном]">
-      </div>
-    </div>
 
-    <div class="section" style="padding-top: 0;">
-      <div class="sec-content">
-        <h2><span class="num num-4">4</span> Каналы информации</h2>
-        <div class="sec-text">
-          <p>Кто-то запоминает речь, кто-то — только текст. Опенспейс для одних — кайф, для других — пытка и потеря эффективности.</p>
-          <p>Узнайте у коллеги, как ему удобнее работать: как оборудовать место, как давать задачи. Если человеку неудобно, КПД труда снижается в разы.</p>
-          <div class="tip">Удобное рабочее место — это инвестиция в результат.</div>
-        </div>
-      </div>
-      <div class="illus-container">
-        <img src="image5.jpg" alt="[Изображение коллеги в наушниках]">
-      </div>
-    </div>
+<!-- ══════════════ СТРАНИЦА 2 ══════════════ -->
+<div class="page">
 
-    <div class="page-footer">
-      <span>ccp.org.ru</span>
-      <span>стр. 2 / 3</span>
+  <div class="stripe-g"></div>
+
+  <div class="section flip">
+    <div class="illus">
+      <img src="image3.jpg" alt="Совместный обед" style="width:100%;height:302px;object-fit:cover;border-radius:14px;">
+    </div>
+    <div>
+      <div class="sec-head">
+        <span class="sec-num c2">2</span>
+        Временное или навсегда?
+      </div>
+      <div class="sec-body">
+        <p>Сломанная нога срастётся. РАС, дислексия, СДВГ — нейроотличия, которые с человеком навсегда. Принять помощь при временном ухудшении эмоционально легче. Признаться в «базовых отличиях» от большинства — труднее.</p>
+        <p>Попробуйте побольше узнать о коллеге. Сядьте рядом на обеде, прямо спросите, как он себя чувствует и нужна ли помощь. Скажите, что вам можно написать или позвонить.</p>
+        <div class="callout pink">«Я не люблю есть один, а ты?» — маленький шаг к большому доверию.</div>
+      </div>
     </div>
   </div>
 
-  <!-- СТРАНИЦА 3 -->
-  <div class="pdf-page">
-    <div class="stripe-y"></div>
-    
-    <div class="section" style="padding-top: 1.5rem; padding-bottom: 0.5rem;">
-      <div class="sec-content" style="grid-column: 1 / span 2;">
-        <h2><span class="num num-5">5</span> Разнообразие — это сила</h2>
-        <div class="sec-text">
-          <p>Инклюзивные компании выигрывают: микроклимат здоровее, а люди развивают софтскиллс. Сотрудники знают, что в случае проблем со здоровьем их не бросят.</p>
-          <p>Моральный дух напрямую влияет на репутацию и результат работы. Разнообразная команда — это устойчивая команда.</p>
-          <div class="tip tip-green">«Хорошо, что я такой, а не какой-нибудь другой».</div>
-        </div>
+  <div class="divider"></div>
+
+  <div class="section">
+    <div>
+      <div class="sec-head">
+        <span class="sec-num c3">3</span>
+        Прозрачность важна всем
+      </div>
+      <div class="sec-body">
+        <p>Неписаные правила — время обеда, звонки в выходные, сборы на дни рождения — кажутся очевидными. Но для человека с тревожностью, РАС или просто новичка их нарушение выглядит как странность или нелояльность.</p>
+        <p>Проговорите или пропишите все неформальные правила и ожидания. Проведите экскурсию для новичков — объясните, кто чем занимается и к кому по каким вопросам обращаться.</p>
+        <div class="callout">Ясные правила делают среду безопасной — для всех без исключения.</div>
       </div>
     </div>
-
-    <!-- ЧЕК-ЛИСТ -->
-    <div class="checklist">
-      <h3 class="checklist-title">С чего начать сегодня?</h3>
-      <div class="checklist-item"><div class="check-box"></div> <span>Проговорить «очевидное» неформальное правило коллеге.</span></div>
-      <div class="checklist-item"><div class="check-box"></div> <span>Дублировать важные задачи текстом.</span></div>
-      <div class="checklist-item"><div class="check-box"></div> <span>Спросить коллегу: «Как ты себя чувствуешь?»</span></div>
-    </div>
-
-    <div class="footer">
-      <h3>Центр лечебной педагогики</h3>
-      <p>Помогаем людям с особенностями развития и их семьям с 1989 года. Каждый человек ценен.</p>
-      <a href="#" class="footer-btn">Подписаться на рассылку →</a>
-    </div>
-
-    <div class="page-footer">
-      <span>© ЦЛП «Особое детство»</span>
-      <span>стр. 3 / 3</span>
+    <div class="illus">
+      <img src="image4.jpg" alt="Тревога перед звонком" style="width:100%;height:302px;object-fit:cover;border-radius:14px;">
     </div>
   </div>
 
+  <div class="divider"></div>
+
+  <div class="section flip">
+    <div class="illus">
+      <img src="image5.jpg" alt="Коллега в наушниках" style="width:100%;height:302px;object-fit:cover;border-radius:14px;">
+    </div>
+    <div>
+      <div class="sec-head">
+        <span class="sec-num c4">4</span>
+        Каналы информации
+      </div>
+      <div class="sec-body">
+        <p>Одни легко запоминают речь, другие выполнят только письменную инструкцию. Опенспейс для одних — кайф, для многих — пытка и потеря эффективности.</p>
+        <p>Спросите сотрудника: как ему удобно получать задачи — письменно или устно? Как оборудовать рабочее место? Как понять, что нужна помощь? Если неудобно — КПД снижается в разы.</p>
+        <div class="callout green">Удобное место работы — это инвестиция, а не уступка.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pgfoot">
+    <span>ccp.org.ru</span>
+    <span>стр. 2 / 3</span>
+  </div>
+</div>
+
+
+<!-- ══════════════ СТРАНИЦА 3 ══════════════ -->
+<div class="page">
+
+  <div class="stripe"></div>
+
+  <div class="section full" style="padding-bottom: 10px;">
+    <div>
+      <div class="sec-head">
+        <span class="sec-num c5">5</span>
+        Разнообразие делает компанию сильнее
+      </div>
+      <div class="sec-body">
+        <p>Компании, которые дают работу разным людям, не просто делают доброе дело — они выигрывают. Микроклимат в таких коллективах здоровее. Сотрудники знают: если со здоровьем что-то случится, их не бросят.</p>
+        <p>Обычные сотрудники получают возможность проявить не только деловые качества, но и человеческие. Моральный дух напрямую влияет на производительность и репутацию организации.</p>
+        <div class="callout green" style="max-width:480px;">«Хорошо, что я такой, а не какой-нибудь другой» — это должно чувствовать каждый в вашей команде.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="checklist-wrap">
+    <div class="checklist-title">✅ С чего начать сегодня?</div>
+    <div class="check-item">
+      <div class="checkbox"></div>
+      <span>Проговорить одно неочевидное правило коллеге, который недавно пришёл или ведёт себя «странно».</span>
+    </div>
+    <div class="check-item">
+      <div class="checkbox"></div>
+      <span>Дублировать важные задачи и договорённости в письменном виде — не только устно.</span>
+    </div>
+    <div class="check-item">
+      <div class="checkbox"></div>
+      <span>Спросить коллегу: «Как ты себя чувствуешь? Всё ли тебе удобно в работе?»</span>
+    </div>
+    <div class="check-item">
+      <div class="checkbox"></div>
+      <span>Узнать, как коллеге удобнее получать задачи — письменно или устно.</span>
+    </div>
+    <div class="check-item">
+      <div class="checkbox"></div>
+      <span>Предложить коллеге: «Если что — можешь писать или звонить мне».</span>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <h3>Центр лечебной педагогики</h3>
+    <p>Помогаем людям с особенностями развития и их семьям с 1989 года. Потому что каждый человек ценен.</p>
+    <a href="#" class="cta-btn">Подписаться на рассылку →</a>
+  </div>
+
+  <div class="pgfoot">
+    <span>© ЦЛП «Особое детство»</span>
+    <span>стр. 3 / 3</span>
+  </div>
 </div>
 
 </body>
