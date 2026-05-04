@@ -57,32 +57,40 @@
       top: 0; left: 0; right: 0; bottom: 0;
       background-image: radial-gradient(var(--blue20) 0.8px, transparent 0.8px);
       background-size: 35px 35px;
-      opacity: 0.2;
+      opacity: 0.15;
       pointer-events: none;
     }
 
     /* COVER SECTION */
     .cover {
       background: var(--blue100);
-      padding: 3rem 3.5rem 0;
+      padding: 0; /* Убрали падинг для полноэкранного фото */
       position: relative;
       color: var(--white);
       z-index: 1;
+      display: flex;
+      flex-direction: column;
     }
+
+    .cover-text {
+      padding: 2.5rem 3.5rem 1.5rem;
+    }
+
     .cover-deco {
       position: absolute;
-      top: -80px; right: -60px;
-      width: 350px; height: 350px;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
       border-radius: 50%;
-      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 100%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+      pointer-events: none;
     }
 
     .cover-logo {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       color: var(--blue20);
     }
 
@@ -90,139 +98,135 @@
       display: inline-block;
       background: var(--yellow100);
       color: var(--nearblack);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
-      padding: 6px 20px;
+      padding: 5px 18px;
       border-radius: 40px;
-      margin-bottom: 1rem;
-      box-shadow: 0 5px 15px rgba(248, 166, 0, 0.3);
+      margin-bottom: 0.8rem;
     }
 
     .cover h1 {
       font-family: 'PT Serif', serif;
-      font-size: 38px;
+      font-size: 34px;
       line-height: 1.1;
       max-width: 650px;
-      margin-bottom: 2rem;
     }
 
+    /* Full width image */
     .main-hero-img {
       width: 100%;
-      height: 320px;
+      height: 280px;
       object-fit: cover;
-      border-radius: 24px 24px 0 0;
       display: block;
-      border: 6px solid rgba(255,255,255,0.25);
-      border-bottom: none;
-      box-shadow: 0 -10px 25px rgba(0,0,0,0.1);
+      margin: 0;
     }
 
-    .stripe-y { height: 12px; background: var(--yellow100); position: relative; z-index: 2; }
-    .stripe-g { height: 6px; background: var(--green80); position: relative; z-index: 2; }
+    .stripe-y { height: 10px; background: var(--yellow100); position: relative; z-index: 2; }
+    .stripe-g { height: 5px; background: var(--green80); position: relative; z-index: 2; }
 
     /* TEXT CONTENT */
     .intro {
-      padding: 2.5rem 3.5rem;
+      padding: 1.8rem 3.5rem;
       background: var(--blue20);
       position: relative;
     }
     .intro p {
       font-family: 'PT Serif', serif;
-      font-size: 20px;
-      line-height: 1.5;
+      font-size: 18px;
+      line-height: 1.4;
       font-style: italic;
       color: #1a4a4e;
     }
 
     .section {
-      padding: 2rem 3.5rem;
+      padding: 1.5rem 3.5rem;
       display: grid;
-      grid-template-columns: 1fr 240px;
-      gap: 3rem;
+      grid-template-columns: 1fr 220px;
+      gap: 2.5rem;
       align-items: start;
       position: relative;
       z-index: 1;
     }
     .section.reverse {
-      grid-template-columns: 240px 1fr;
+      grid-template-columns: 220px 1fr;
     }
 
     .sec-content h2 {
       font-family: 'PT Serif', serif;
-      font-size: 26px;
-      margin-bottom: 1.2rem;
+      font-size: 24px;
+      margin-bottom: 0.8rem;
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 15px;
       color: var(--blue100);
       line-height: 1.15;
     }
     .num {
-      width: 48px; height: 48px;
-      border-radius: 14px;
+      width: 42px; height: 42px;
+      border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 20px; font-weight: 800;
+      font-size: 18px; font-weight: 800;
       flex-shrink: 0;
       transform: rotate(-3deg);
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     .sec-text {
-      font-size: 16.5px;
-      line-height: 1.6;
+      font-size: 15.5px;
+      line-height: 1.5;
       color: #333;
     }
-    .sec-text p { margin-bottom: 0.8rem; }
+    .sec-text p { margin-bottom: 0.6rem; }
 
     .tip {
-      margin-top: 1.5rem;
-      padding: 1.2rem;
-      border-radius: 18px;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 15px;
       font-weight: 700;
-      font-size: 16px;
-      border-left: 10px solid var(--blue100);
+      font-size: 15px;
+      border-left: 8px solid var(--blue100);
       background: var(--white);
       box-shadow: var(--soft-shadow);
       display: flex;
-      gap: 15px;
+      gap: 12px;
       align-items: flex-start;
       color: #1e4d50;
     }
-    .tip::before { content: "✨"; font-size: 22px; }
+    .tip::before { content: "✨"; font-size: 20px; }
 
     .illus-container img {
       width: 100%;
-      border-radius: 22px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       border: 1px solid #eee;
     }
 
-    /* FOOTER */
+    /* FOOTER AREA */
     .footer {
       background: var(--blue100);
-      padding: 3rem;
+      padding: 2rem 3rem;
       color: white;
       text-align: center;
       margin-top: auto;
     }
-    .footer h3 { font-family: 'PT Serif', serif; font-size: 28px; margin-bottom: 0.8rem; }
-    .footer p { color: var(--blue20); margin-bottom: 2rem; font-size: 17px; max-width: 580px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+    .footer h3 { font-family: 'PT Serif', serif; font-size: 26px; margin-bottom: 0.5rem; }
+    .footer p { color: var(--blue20); margin-bottom: 1.5rem; font-size: 16px; max-width: 580px; margin-left: auto; margin-right: auto; line-height: 1.4; }
     .footer-btn {
       display: inline-block;
       background: var(--yellow100);
       color: var(--nearblack);
-      padding: 14px 45px;
+      padding: 12px 40px;
       border-radius: 80px;
       font-weight: 800;
       text-decoration: none;
-      font-size: 17px;
+      font-size: 16px;
       box-shadow: 0 10px 20px rgba(248, 166, 0, 0.4);
     }
 
     .page-footer {
-      padding: 1.2rem 3.5rem;
+      padding: 1rem 3.5rem;
       display: flex; justify-content: space-between;
-      font-size: 12px; color: #94a3b8;
+      font-size: 11px; color: #94a3b8;
       border-top: 1px solid #f1f5f9;
       position: relative;
     }
@@ -231,28 +235,28 @@
     .checklist {
       background: #fafbfc;
       border: 3px dashed var(--blue80);
-      margin: 0 3.5rem 2rem;
-      padding: 2rem;
-      border-radius: 30px;
+      margin: 0 3.5rem 1.5rem;
+      padding: 1.5rem;
+      border-radius: 25px;
     }
     .checklist-title {
       font-family: 'PT Serif', serif;
-      font-size: 24px;
+      font-size: 22px;
       color: var(--blue100);
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     .checklist-item {
       display: flex;
-      gap: 15px;
-      margin-bottom: 1rem;
-      font-size: 17px;
+      gap: 12px;
+      margin-bottom: 0.8rem;
+      font-size: 15.5px;
       font-weight: 600;
     }
     .check-box {
-      width: 28px; height: 28px;
+      width: 24px; height: 24px;
       border: 3px solid var(--blue20);
-      border-radius: 8px;
+      border-radius: 6px;
       flex-shrink: 0;
     }
 
@@ -281,14 +285,16 @@
   <div class="pdf-page">
     <div class="cover">
       <div class="cover-deco"></div>
-      <div class="cover-logo">Центр лечебной педагогики</div>
-      <div class="cover-tag">Бесплатный гайд</div>
-      <h1>Как помочь коллеге с ментальными и другими особенностями (и себе!)</h1>
-      <img src="image1.jpg" alt="[Изображение команды разнообразия]" class="main-hero-img">
+      <div class="cover-text">
+        <div class="cover-logo">Центр лечебной педагогики</div>
+        <div class="cover-tag">Бесплатный гайд</div>
+        <h1>Как помочь коллеге с ментальными и другими особенностями (и себе!)</h1>
+      </div>
+      <img src="image1.jpg" alt="" class="main-hero-img">
     </div>
     <div class="stripe-y"></div>
     <div class="intro">
-      <p>Человеческое разнообразие – чудо и ресурс. Исследования показывают, что нейроразнообразие дает неочевидные преимущества и бизнесу, и каждому члену коллектива. Каждый ценен и каждый сможет оказаться по ту сторону!</p>
+      <p>Человеческое разнообразие – чудо и ресурс. Исследования показывают, что нейроразнообразие дает очень много неочевидных преимуществ как бизнесу, так и каждому члену коллектива. Каждый ценен и каждый сможет оказаться по ту сторону!</p>
     </div>
     
     <div class="section">
@@ -301,7 +307,7 @@
         </div>
       </div>
       <div class="illus-container">
-        <img src="image2.jpg" alt="[Изображение скрытой усталости]">
+        <img src="image2.jpg" alt="">
       </div>
     </div>
     <div class="page-footer">
@@ -315,7 +321,7 @@
     <div class="stripe-g"></div>
     <div class="section reverse">
       <div class="illus-container">
-        <img src="image3.jpg" alt="[Изображение совместного обеда]">
+        <img src="image3.jpg" alt="">
       </div>
       <div class="sec-content">
         <h2><span class="num num-2">2</span> Состояние или отличия?</h2>
@@ -337,7 +343,7 @@
         </div>
       </div>
       <div class="illus-container">
-        <img src="image4.jpg" alt="[Изображение тревоги перед телефоном]">
+        <img src="image4.jpg" alt="[Image of anxiety at night]">
       </div>
     </div>
     <div class="page-footer">
@@ -350,7 +356,7 @@
   <div class="pdf-page">
     <div class="stripe-y"></div>
     
-    <div class="section" style="padding-bottom: 1rem;">
+    <div class="section" style="padding-bottom: 0.5rem;">
       <div class="sec-content">
         <h2><span class="num num-4">4</span> Каналы информации</h2>
         <div class="sec-text">
@@ -360,11 +366,11 @@
         </div>
       </div>
       <div class="illus-container">
-        <img src="image5.jpg" alt="[Изображение коллеги в наушниках]">
+        <img src="image5.jpg" alt="">
       </div>
     </div>
 
-    <div class="section" style="padding-top: 0; padding-bottom: 1.5rem;">
+    <div class="section" style="padding-top: 0; padding-bottom: 1rem;">
       <div class="sec-content" style="grid-column: 1 / span 2;">
         <h2><span class="num num-5">5</span> Разнообразие — это сила</h2>
         <div class="sec-text">
